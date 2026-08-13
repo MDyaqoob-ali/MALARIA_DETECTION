@@ -1,7 +1,7 @@
 # Detecting Malaria using Deep Learning 🦟🦠
 
 <p align="center">
-  <a href="https://github.com/HarshCasper/Malaria-Detection">
+  <a href="https://github.com/MDyaqoob-ali/MALARIA_DETECTION.git">
     <img src="https://pngimage.net/wp-content/uploads/2018/06/malaria-in-png-1.png" alt="Logo" width="150" height="150">
   </a>
 
@@ -57,4 +57,4 @@ python app.py
 
 ## 📜 LICENSE
 
-[MIT](https://github.com/HarshCasper/Malaria-Detection/blob/master/LICENSE)
+[MIT](https://github.com/MDyaqoob-ali/MALARIA_DETECTION/blob/master/LICENSE)
