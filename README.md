@@ -2,7 +2,7 @@
 
 <p align="center">
   <a href="https://github.com/MDyaqoob-ali/MALARIA_DETECTION.git">
-    <img src="https://pngimage.net/wp-content/uploads/2018/06/malaria-in-png-1.png" alt="Logo" width="150" height="150">
+   
   </a>
 
 ## 📌 Introduction
