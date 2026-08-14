@@ -1,8 +1,8 @@
 # Detecting Malaria using Deep Learning 🦟🦠
 
 <p align="center">
-  <a href="https://github.com/HarshCasper/Malaria-Detection">
-    <img src="https://pngimage.net/wp-content/uploads/2018/06/malaria-in-png-1.png" alt="Logo" width="150" height="150">
+  <a href="https://github.com/MDyaqoob-ali/MALARIA_DETECTION.git">
+   
   </a>
 
 ## 📌 Introduction
@@ -32,7 +32,7 @@ Our Model performs fairly well with an accuracy of 95% and an F1 Score of 95% an
 2. Clone the Repo by going to your local Git Client and pushing in the command: 
 
 ```sh
-https://github.com/HarshCasper/Malaria-Detection.git
+https://github.com/MDyaqoob-ali/MALARIA_DETECTION.git
 ```
 
 3. Install the Packages: 
@@ -57,4 +57,4 @@ python app.py
 
 ## 📜 LICENSE
 
-[MIT](https://github.com/HarshCasper/Malaria-Detection/blob/master/LICENSE)
+[MIT](https://github.com/MDyaqoob-ali/MALARIA_DETECTION/blob/master/LICENSE)
