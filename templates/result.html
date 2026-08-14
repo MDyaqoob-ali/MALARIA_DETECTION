@@ -1,44 +1,100 @@
 <!DOCTYPE html>
-<html>
-   <head>
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-      <title>Malaria Test Application🔥</title>
-      <link rel="icon" href="{{ url_for('static', filename='images/icon.png') }}" type="image/gif">
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-      <link rel="stylesheet" href="{{ url_for('static', filename='css/grayscale.css') }}">
-   </head>
-   <body>
-      <div class="jumbotron jumbotron-fluid bg-info text-white text-center" style="background: #AAA;">
-         <div class="container">
-            <h2 class="display-1">{{ prediction }}</h2>
-         </div>
-      </div>
-      <div class="container">
-         <h2 align="center">Understanding the Working of the Application</h2>
-         <br>
-         <p>
-            <font size="4">
-            This Machine Learning Web Application utilizes a Two-Layered Convolutional Neural Network to process the Cell Images and predict if they are 
-            Malarial with an accuracy of nearly 95%. The Dataset to process the Deep Learning Algorithm is taken from the official US National Library of Medicine's NIH Website which is a repository of segmented cells from the thin blood smear slide images from the Malaria Screener research activity.
-            </font>
-         </p>
-         <img src="{{url_for('static', filename='analysis.jpg')}}" align="middle"/>
-         <p align="middle"><font size="2"><b>Figure: The Confusion Matrix and Validation Accuracy Graph</b></font></p>
-         <br>
-         <h2 align="center">How our Application is better than Traditional Methods?</h2>
-         <br>
-         <p><br>
-            <font size="4">
-            Where malaria is not endemic any more (such as in the United States), health-care providers may not be familiar with the disease. Clinicians seeing a malaria patient may forget to consider malaria among the potential diagnoses and not order the needed diagnostic tests. Laboratorians may lack experience with malaria and fail to detect parasites when examining blood smears under the microscope.
-            Malaria is an acute febrile illness. In a non-immune individual, symptoms usually appear 10–15 days after the infective mosquito bite. The first symptoms – fever, headache, and chills – may be mild and difficult to recognize as malaria. If not treated within 24 hours, P. falciparum malaria can progress to severe illness, often leading to death.
-            Our Model performs fairly well with an accuracy of 95% and an F1 Score of 95% and Recall Score of 92%.
-            </font>
-         </p>
-      </div>
-      <footer class="container text-center footer">
-      </footer>
-   </body>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Malaria Detection Result</title>
+    <!-- Favicon -->
+    <link rel="icon" href="{{ url_for('static', filename='images/icon.png') }}" type="image/gif">
+    <!-- CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<!-- Cinematic Ridge Background -->
+<div id="cinematic-bg">
+    <div class="light-beam"></div>
+    <div class="ridge-container">
+        <svg class="ridge-svg" viewBox="0 0 1000 600" preserveAspectRatio="none">
+            <defs>
+                <linearGradient id="glowGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stop-color="#7a1a0a"/>
+                    <stop offset="50%" stop-color="#e2540a"/>
+                    <stop offset="100%" stop-color="#ffb238"/>
+                </linearGradient>
+            </defs>
+            <path class="ridge-glow-path" d="M 0 600 C 150 400, 250 100, 350 100 C 450 100, 800 300, 1000 600" />
+            <path class="ridge-silhouette-path" d="M 0 600 C 150 400, 250 100, 350 100 C 450 100, 800 300, 1000 600 L 1000 600 L 0 600 Z" />
+            <g class="figure" transform="translate(345, 75)">
+                <circle cx="5" cy="5" r="4" fill="#000000" />
+                <rect x="3" y="9" width="4" height="10" fill="#000000" />
+                <rect x="3" y="19" width="2" height="6" fill="#000000" />
+                <rect x="5" y="19" width="2" height="6" fill="#000000" />
+                <path d="M 3 10 L -1 16 M 7 10 L 11 16" stroke="#000000" stroke-width="1.5" />
+            </g>
+        </svg>
+    </div>
+    <div class="noise-overlay"></div>
+    <div class="vignette"></div>
+</div>
+
+<div class="page-container hero-content-right fade-in">
+
+    <!-- Report Header -->
+    <div class="report-header">
+        <h1>Diagnostic AI Report</h1>
+        <p class="timestamp">Generated: <script>document.write(new Date().toLocaleString())</script></p>
+    </div>
+
+    <!-- Diagnostic Verdict -->
+    <div class="glass-card result-banner {% if 'Not Infected' in prediction %}banner-healthy{% else %}banner-infected{% endif %}">
+        <div class="verdict-label">AI Analysis Verdict</div>
+        <h2>{{ prediction }}</h2>
+    </div>
+
+    <!-- Details Grid -->
+    <div class="report-grid">
+        <!-- Methodology -->
+        <div class="glass-card report-panel">
+            <h3>
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+                </svg>
+                Methodology
+            </h3>
+            <p>This analysis utilizes a Two-Layered Convolutional Neural Network (CNN) to process the submitted blood smear cell image.</p>
+            <ul class="tech-specs">
+                <li><strong>Architecture:</strong> Deep Learning CNN</li>
+                <li><strong>Validation Accuracy:</strong> ~95%</li>
+                <li><strong>Training Data:</strong> US National Library of Medicine (NIH) Malaria Screener Repository</li>
+            </ul>
+        </div>
+
+        <!-- Action / Next Steps -->
+        <div class="glass-card report-panel">
+             <h3>
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                 Next Steps
+             </h3>
+             <p>This is an AI-assisted preliminary screening. A clinical diagnosis must be confirmed by a certified medical professional.</p>
+             <a href="/" class="btn-primary" style="display:inline-block; margin-top:1.5rem; text-decoration:none; padding: 0.6rem 1.5rem; font-size: 1rem;">Run Another Test</a>
+        </div>
+    </div>
+
+    <!-- White Card for charts -->
+    <div class="white-card">
+        <h3 style="margin-top:0;">Model Performance Metrics</h3>
+        <p style="margin-bottom:1.5rem;">The following confusion matrix and accuracy graph validate the underlying model's performance on the test dataset.</p>
+        <div class="analysis-image-container">
+            <img src="{{url_for('static', filename='analysis.jpg')}}" alt="Confusion Matrix and Accuracy Graphs">
+            <div class="image-caption">Figure 1: Confusion Matrix and Validation Accuracy</div>
+        </div>
+    </div>
+
+</div>
+
+
+</body>
 </html>

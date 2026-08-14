@@ -1,59 +1,80 @@
 <!DOCTYPE html>
-<html>                
+<html lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Malaria Test Application🔥</title>
+    <title>Malaria Detection</title>
+    <!-- Favicon -->
     <link rel="icon" href="{{ url_for('static', filename='images/icon.png') }}" type="image/gif">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/grayscale.css') }}">
+    <!-- CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
 
-<div class="jumbotron jumbotron-fluid bg-info text-white text-center" style="background: #AAA;">
-    <div class="container">
-        <h2 class="display-2">Classifying Malarial Cells using Convolutional Neural Networks</h2>
-        <br>
-        <img src="{{url_for('static', filename='disease.png')}}" align="middle" width=100 height=100/>
-        <br><br>
-        <p class="text-white bg-dark">Malaria is a mosquito-borne infectious disease that affects humans and other animals. Malaria causes symptoms that typically include fever, tiredness, vomiting, and headaches. This Web Application utilizes Tensorflow and Flask to develop and deploy
-        a Machine Learning Web Application that can detect Malaria Cell using Image Processing.</p>
+<!-- Cinematic Ridge Background -->
+<div id="cinematic-bg">
+    <div class="light-beam"></div>
+    <div class="ridge-container">
+        <svg class="ridge-svg" viewBox="0 0 1000 600" preserveAspectRatio="none">
+            <defs>
+                <linearGradient id="glowGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stop-color="#7a1a0a"/>
+                    <stop offset="50%" stop-color="#e2540a"/>
+                    <stop offset="100%" stop-color="#ffb238"/>
+                </linearGradient>
+            </defs>
+            <path class="ridge-glow-path" d="M 0 600 C 150 400, 250 100, 350 100 C 450 100, 800 300, 1000 600" />
+            <path class="ridge-silhouette-path" d="M 0 600 C 150 400, 250 100, 350 100 C 450 100, 800 300, 1000 600 L 1000 600 L 0 600 Z" />
+            <g class="figure" transform="translate(345, 75)">
+                <circle cx="5" cy="5" r="4" fill="#000000" />
+                <rect x="3" y="9" width="4" height="10" fill="#000000" />
+                <rect x="3" y="19" width="2" height="6" fill="#000000" />
+                <rect x="5" y="19" width="2" height="6" fill="#000000" />
+                <path d="M 3 10 L -1 16 M 7 10 L 11 16" stroke="#000000" stroke-width="1.5" />
+            </g>
+        </svg>
     </div>
+    <div class="noise-overlay"></div>
+    <div class="vignette"></div>
 </div>
 
-<div class="container">
-<h3 align="">
-<form action="/result" method="POST" enctype="multipart/form-data">
-	<div>
-    <input type="file" name="pic" accept="image/*">
+<div class="page-container hero-content-right fade-in">
+    
+    <header class="hero-header">
+        <!-- Molecule / AI Icon -->
+        <svg class="hero-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+        </svg>
+        
+        <h2>Classifying Malarial Cells using Convolutional Neural Networks</h2>
+        <p class="hero-text">
+            Malaria is a mosquito-borne infectious disease that affects humans and other animals. Malaria causes symptoms that typically include fever, tiredness, vomiting, and headaches. This Web Application utilizes Tensorflow and Flask to develop and deploy a Machine Learning Web Application that can detect Malaria Cell using Image Processing.
+        </p>
+    </header>
+
+    <!-- Glassmorphic Upload Card -->
+    <div class="glass-card">
+        <form action="/result" method="POST" enctype="multipart/form-data" class="upload-container">
+            
+            <div class="file-upload-wrapper">
+                <input type="file" name="pic" accept="image/*" class="file-upload-input" id="picUpload" required onchange="document.getElementById('fileName').textContent = this.files[0] ? this.files[0].name : 'No file chosen'">
+                <div class="file-upload-label">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="margin-bottom: 12px;">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
+                    </svg>
+                    <span>Click or drag image to upload</span>
+                </div>
+            </div>
+            
+            <div id="fileName" class="file-name-display">No file chosen</div>
+
+            <button type="submit" class="btn-primary">Submit Image</button>
+            
+        </form>
+    </div>
+
 </div>
-    <br>
-    <input type="submit" value="Submit">
-    <br>
-    <br>
-</form>
-</div> 
-<footer class="container text-center footer">
-      </footer>
-<style> 
-input[type=submit] {
-  background-color: #AAA;
-  border: none;
-  color: white;
-  padding: 16px 32px;
-  text-decoration: none;
-  margin: 4px 2px;
-  cursor: pointer;
-}
-div{
-  padding:5px 10px;
-  border:1px solid #000000;
-  position:relative;
-  color:#FFFFFF;
-  border-radius:2px;
-}
-</style>
+
+
 </body>
 </html>
