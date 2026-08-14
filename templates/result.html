@@ -11,32 +11,8 @@
 </head>
 <body>
 
-<!-- Cinematic Ridge Background -->
-<div id="cinematic-bg">
-    <div class="light-beam"></div>
-    <div class="ridge-container">
-        <svg class="ridge-svg" viewBox="0 0 1000 600" preserveAspectRatio="none">
-            <defs>
-                <linearGradient id="glowGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="0%" stop-color="#7a1a0a"/>
-                    <stop offset="50%" stop-color="#e2540a"/>
-                    <stop offset="100%" stop-color="#ffb238"/>
-                </linearGradient>
-            </defs>
-            <path class="ridge-glow-path" d="M 0 600 C 150 400, 250 100, 350 100 C 450 100, 800 300, 1000 600" />
-            <path class="ridge-silhouette-path" d="M 0 600 C 150 400, 250 100, 350 100 C 450 100, 800 300, 1000 600 L 1000 600 L 0 600 Z" />
-            <g class="figure" transform="translate(345, 75)">
-                <circle cx="5" cy="5" r="4" fill="#000000" />
-                <rect x="3" y="9" width="4" height="10" fill="#000000" />
-                <rect x="3" y="19" width="2" height="6" fill="#000000" />
-                <rect x="5" y="19" width="2" height="6" fill="#000000" />
-                <path d="M 3 10 L -1 16 M 7 10 L 11 16" stroke="#000000" stroke-width="1.5" />
-            </g>
-        </svg>
-    </div>
-    <div class="noise-overlay"></div>
-    <div class="vignette"></div>
-</div>
+<!-- 3D Interactive Orb Background -->
+<div id="orb-canvas-container"></div>
 
 <div class="page-container hero-content-right fade-in">
 
@@ -106,6 +82,9 @@
 
 </div>
 
+<!-- Scripts -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="{{ url_for('static', filename='js/orb.js') }}"></script>
 
 </body>
 </html>

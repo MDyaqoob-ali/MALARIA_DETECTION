@@ -4,16 +4,16 @@
   /* Premium Navy to Black */
   --bg-dark-start: #060d1a;
   --bg-dark-end: #0c1830;
-  
+
   /* Text */
   --text-main: #f8fafc;
   --text-muted: #cbd5e1;
-  
+
   /* Accents */
   --accent-blue: #3b82f6;
   --accent-blue-glow: #60a5fa;
   --accent-gold: #f59e0b;
-  
+
   /* Verdicts */
   --verdict-infected-bg: rgba(220, 38, 38, 0.15);
   --verdict-infected-border: #ef4444;
@@ -24,7 +24,8 @@
   --radius-lg: 12px;
 }
 
-body, html {
+body,
+html {
   margin: 0;
   padding: 0;
   height: 100%;
@@ -34,98 +35,34 @@ body, html {
   overflow-x: hidden;
 }
 
-/* Cinematic Background */
-#cinematic-bg {
+/* 3D Interactive Orb Background */
+#orb-canvas-container {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   z-index: -1;
-  background-color: #000000;
-  overflow: hidden;
   pointer-events: none;
-}
-
-.light-beam {
-  position: absolute;
-  top: -50%;
-  right: -20%;
-  width: 150%;
-  height: 150%;
-  background: radial-gradient(ellipse at top right, rgba(255, 244, 214, 0.4) 0%, rgba(245, 166, 35, 0.15) 40%, rgba(0,0,0,0) 70%);
-  transform-origin: top right;
-  transform: rotate(35deg) translate(0, 0);
-  filter: blur(40px);
-  animation: beamDrift 10s infinite alternate ease-in-out;
-}
-
-@keyframes beamDrift {
-  0% { transform: rotate(35deg) scale(1); opacity: 0.8; }
-  100% { transform: rotate(38deg) scale(1.05); opacity: 1; }
-}
-
-.ridge-container {
-  position: absolute;
-  bottom: -2px;
-  left: -2px;
-  width: 50%; /* 40-50% of the screen width */
-  min-width: 600px; /* Ensure it doesn't get too small on mobile */
-  height: auto;
-  display: flex;
-  align-items: flex-end;
-}
-
-.ridge-svg {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-.ridge-glow-path {
-  fill: none;
-  stroke: url(#glowGradient);
-  stroke-width: 6;
-  filter: drop-shadow(0 -5px 12px rgba(255, 178, 56, 0.8));
-  animation: emberFlicker 3.5s infinite alternate ease-in-out;
-}
-
-@keyframes emberFlicker {
-  0% { opacity: 0.7; stroke-width: 4; }
-  100% { opacity: 1; stroke-width: 7; }
-}
-
-.ridge-silhouette-path {
-  fill: #000000;
-}
-
-.noise-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: url('data:image/svg+xml;utf8,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseFilter)"/%3E%3C/svg%3E');
-  opacity: 0.04;
-  mix-blend-mode: overlay;
-}
-
-.vignette {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  box-shadow: inset 0 0 150px rgba(0,0,0,0.9);
+  background-color: #0a0512;
+  overflow: hidden;
 }
 
 /* Fade-in Animation */
 .fade-in {
   animation: fadeIn 1s ease-out forwards;
 }
+
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Layout Utilities */
@@ -169,9 +106,11 @@ body, html {
 .white-card h3 {
   color: #0f172a;
 }
+
 .white-card p {
   color: #475569;
 }
+
 .white-card .image-caption {
   color: #64748b;
 }
@@ -290,7 +229,7 @@ body, html {
 .result-banner h2 {
   font-size: 2rem;
   margin: 0 0 1rem 0;
-  font-weight: 600;
+  font-weight: 400;
 }
 
 .banner-infected {
@@ -298,6 +237,7 @@ body, html {
   border-color: var(--verdict-infected-border);
   box-shadow: 0 0 20px rgba(220, 38, 38, 0.2);
 }
+
 .banner-infected h2 {
   color: #fca5a5;
 }
@@ -307,6 +247,7 @@ body, html {
   border-color: var(--verdict-healthy-border);
   box-shadow: 0 0 20px rgba(16, 185, 129, 0.2);
 }
+
 .banner-healthy h2 {
   color: #6ee7b7;
 }
@@ -320,6 +261,7 @@ body, html {
   gap: 0.5rem;
   transition: color 0.2s;
 }
+
 .back-link:hover {
   color: #fff;
 }
@@ -328,11 +270,13 @@ body, html {
 .content-section {
   margin-bottom: 1.5rem;
 }
+
 .content-section h3 {
   font-size: 1.4rem;
   margin-bottom: 0.75rem;
   font-weight: 600;
 }
+
 .content-section p {
   line-height: 1.7;
   font-size: 1rem;
@@ -350,13 +294,13 @@ body, html {
   max-width: 100%;
   height: auto;
   border-radius: 8px;
-  border: 1px solid rgba(0,0,0,0.1);
+  border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .image-caption {
   margin-top: 1rem;
   font-size: 0.9rem;
-  font-weight: 500;
+  font-weight: 400;
   text-align: center;
 }
 
@@ -366,64 +310,85 @@ body, html {
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   padding-bottom: 1rem;
 }
+
 .report-header h1 {
   font-size: 2.2rem;
   margin: 0;
   color: #fff;
-  font-weight: 600;
+  font-weight: 400;
   letter-spacing: 1px;
 }
+
 .timestamp {
   color: var(--text-muted);
   font-size: 0.95rem;
   margin-top: 0.5rem;
 }
+
 .verdict-label {
   text-transform: uppercase;
   font-size: 0.9rem;
   letter-spacing: 1.5px;
   margin-bottom: 0.5rem;
   opacity: 0.9;
-  font-weight: 500;
+  font-weight: 400;
 }
+
 .report-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1.5rem;
   margin-bottom: 2rem;
 }
+
 .report-panel {
   padding: 1.5rem;
   margin-bottom: 0;
 }
+
 .report-panel h3 {
   display: flex;
   align-items: center;
   gap: 0.5rem;
   font-size: 1.2rem;
   margin-top: 0;
-  border-bottom: 1px solid rgba(255,255,255,0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   padding-bottom: 0.5rem;
   color: var(--accent-blue-glow);
 }
+
 .tech-specs {
   list-style: none;
   padding: 0;
   margin: 1rem 0 0 0;
 }
+
 .tech-specs li {
   margin-bottom: 0.6rem;
   font-size: 0.95rem;
   color: var(--text-muted);
 }
+
 .tech-specs strong {
   color: #fff;
 }
 
 /* Responsive */
 @media (max-width: 768px) {
-  .hero-header h2 { font-size: 2rem; }
-  .result-banner h2 { font-size: 1.5rem; }
-  .glass-card, .white-card { padding: 1.5rem; }
-  .report-grid { grid-template-columns: 1fr; }
+  .hero-header h2 {
+    font-size: 2rem;
+  }
+
+  .result-banner h2 {
+    font-size: 1.5rem;
+  }
+
+  .glass-card,
+  .white-card {
+    padding: 1.5rem;
+  }
+
+  .report-grid {
+    grid-template-columns: 1fr;
+  }
 }
