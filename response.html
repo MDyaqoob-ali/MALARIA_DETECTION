@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Malaria Detection Result</title>
+    <link rel="icon" href="/static/images/icon.png" type="image/gif">
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+
+<div class="page-container">
+
+    <!-- Dynamic Banner -->
+    <div class="result-banner banner-healthy">
+        
+        <!-- Icon logic based on prediction -->
+        
+        <svg class="result-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        
+
+        <h2>This cell is most likely to be Not Infected with Malarial Parasite.</h2>
+        <a href="/" style="color: #fff; text-decoration: underline; font-size: 0.9rem; opacity: 0.8; margin-top: -0.5rem;">← Run another test</a>
+    </div>
+
+    <div class="panel">
+        <div class="content-section">
+            <h3>Understanding the Working of the Application</h3>
+            <p>
+                This Machine Learning Web Application utilizes a Two-Layered Convolutional Neural Network to process the Cell Images and predict if they are Malarial with an accuracy of nearly 95%. The Dataset to process the Deep Learning Algorithm is taken from the official US National Library of Medicine's NIH Website which is a repository of segmented cells from the thin blood smear slide images from the Malaria Screener research activity.
+            </p>
+        </div>
+
+        <div class="analysis-image-container">
+            <img src="/static/analysis.jpg" alt="Analysis Graphs">
+            <div class="image-caption">Figure: The Confusion Matrix and Validation Accuracy Graph</div>
+        </div>
+
+        <div class="content-section" style="margin-top: 3rem;">
+            <h3>How our Application is better than Traditional Methods?</h3>
+            <p>
+                Where malaria is not endemic any more (such as in the United States), health-care providers may not be familiar with the disease. Clinicians seeing a malaria patient may forget to consider malaria among the potential diagnoses and not order the needed diagnostic tests. Laboratorians may lack experience with malaria and fail to detect parasites when examining blood smears under the microscope.
+            </p>
+            <p>
+                Malaria is an acute febrile illness. In a non-immune individual, symptoms usually appear 10–15 days after the infective mosquito bite. The first symptoms – fever, headache, and chills – may be mild and difficult to recognize as malaria. If not treated within 24 hours, P. falciparum malaria can progress to severe illness, often leading to death.
+            </p>
+            <p>
+                Our Model performs fairly well with an accuracy of 95% and an F1 Score of 95% and Recall Score of 92%.
+            </p>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
